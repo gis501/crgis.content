@@ -21,7 +21,7 @@ class ITheater(form.Schema):
     # models/theater.xml to define the content type
     # and add directives here as necessary.
     
-    #form.model("models/bixiewu.xml")
+    #form.model("models/theater.xml")
 
     title = schema.TextLine(
         title=_(u"Title"),
@@ -47,12 +47,12 @@ class ITheater(form.Schema):
 # methods and properties. Put methods that are mainly useful for rendering
 # in separate view classes.
 
-class BiXieWu(dexterity.Container):
-    grok.implements(IBiXieWu)
+class Theater(dexterity.Container):
+    grok.implements(ITheater)
     
     # Add your class methods and properties here
 
-@indexer(IBiXieWu)
+@indexer(ITheater)
 def lcityIndexer(obj):
     if len(obj.location) >= 3:
         return obj.location[:3]
@@ -62,7 +62,7 @@ grok.global_adapter(lcityIndexer, name='lcity')
 
 # View class
 # The view will automatically use a similarly named template in
-# bixiewu_templates.
+# theater_templates.
 # Template filenames should be all lower case.
 # The view will render when you request a content object with this
 # interface with "/@@sampleview" appended.
@@ -71,7 +71,7 @@ grok.global_adapter(lcityIndexer, name='lcity')
 # changing the view class name and template filename to View / view.pt.
 
 class View(grok.View):
-    grok.context(IBiXieWu)
+    grok.context(ITheater)
     grok.require('zope2.View')
     grok.name('view')
 
