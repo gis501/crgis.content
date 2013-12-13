@@ -10,15 +10,15 @@ from crgis.content import MessageFactory as _
 
 # Interface class; used to define content-type schema.
 
-class IBiXieWu(form.Schema):
+class ITheater(form.Schema):
     """
-    CRGIS BiXieWu Type
+    CRGIS Theater Type
     """
     
     # If you want a schema-defined interface, delete the form.model
     # line below and delete the matching file in the models sub-directory.
     # If you want a model-based interface, edit
-    # models/bixiewu.xml to define the content type
+    # models/theater.xml to define the content type
     # and add directives here as necessary.
     
     #form.model("models/bixiewu.xml")
